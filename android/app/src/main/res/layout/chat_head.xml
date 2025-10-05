@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_head_root"
+    android:layout_width="64dp"
+    android:layout_height="64dp"
+    android:padding="2dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/bubble_bg"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:elevation="6dp">
+
+    <FrameLayout
+        android:id="@+id/avatar_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bubble_avatar_mask"
+        android:clipToOutline="true">
+
+        <ImageView
+            android:id="@+id/chat_head_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="@null" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/chat_head_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="18dp"
+        android:minHeight="18dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginTop="-2dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:includeFontPadding="false"
+        android:background="@drawable/overlay_badge_bg"
+        android:visibility="gone"
+        android:elevation="2dp"
+        android:text="1" />
+</FrameLayout>

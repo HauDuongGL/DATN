@@ -1,0 +1,82 @@
+{
+    "login_page": {
+        "title": "Hi There, Welcome back!",
+        "title_email": "Email Address",
+        "email": "Enter your email address",
+        "title_password": "Password",
+        "password":"Enter your password",
+        "forgot_password": "Forgot Password",
+        "log_in": "Log in",
+        "confirm_sign_up": "Haven't created an account yet?",
+        "sign_up": "Sign up",
+        "user_not_found": "This email does not match our records. Please check again.",
+        "wrong_password": "Password is incorrect, please try again",
+        "email_required": "email is required",
+        "password_required": "password is required"
+    },
+    "app_bar": {
+        "back": "back",
+        "eng": "ENG",
+        "swa": "SWA"
+    },
+    "exit_app": {
+        "title":"Go Back!",
+        "sub_title": "Are you sure you want to come back?",
+        "cancel": "cancel",
+        "yes": "yes, Go Back!"
+    },
+
+    "pop_up_page": {
+        "title": "Select your Activity",
+        "sub_title": "Earn Points for Planting or Protecting Trees",
+        "change_title": "1 Tree = 10 Points"
+    },
+
+    "home_page": {
+        "get_selling": "Get Seedlings",
+        "plant_trees": "Plant Trees",
+        "protect_trees": "Protect Trees",
+        "groups": "Groups",
+        "app_bar": {
+            "sub_text_coin": "Points | Habitat Hero"
+        },
+        "level_status": {
+            "reach": "You reached {level}!",
+            "remaining": "{count} more tree{plural} to reach {level}"
+        },
+        "welcome":{
+            "title": "Welcome to\nSiti na Miti",
+            "sub_title_1": "Work together as a community to\nplant ",
+            "sub_title_2": "4 billion trees!",
+            "title_btn": "Learn more"
+        },
+        "point_info": {
+            "title": "Earn points by planting or protecting trees",
+            "sub_title": "1 Tree = 10 points",
+            "title_btn": "Learn more"
+        },
+        "your_trees": {
+            "title": "Your Trees",
+            "trees_planted": {
+                "title": "Trees Planted",
+                "sub_title": "Plant your first tree to see your stats",
+                "title_btn": "Start planting"
+            },
+            "trees_protect": {
+                "title": "Trees Protected",
+                "sub_title": "Protect your first tree to see your stats",
+                "title_btn": "Start protecting"
+            }     
+        },
+        "help_center": {
+                "title_info":"Help Center",
+                "title": "Need some help?",
+                "sub_title": "View some useful resources to help you on your planting journey or contact our support team"
+        },
+        "learning_hub": {
+                "title_info": "Learning Hub",
+                "title": "Become tree planting experts with our learning hub!",
+                "title_btn": "Explore now"
+        }
+    }
+}

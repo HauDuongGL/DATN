@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/trash_root"
+    android:layout_width="96dp"
+    android:layout_height="96dp"
+    android:padding="12dp"
+    android:background="@android:color/transparent">
+
+    <FrameLayout
+        android:id="@+id/trash_circle"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:background="@drawable/trash_circle_bg">
+
+        <ImageView
+            android:id="@+id/trash_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="@null" />
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,80 @@
+{
+    "login_page": {
+        "title": "Habari, Karibu tena!",
+        "title_email": "Anuani ya Barua Pepe",
+        "email": "Weka anuani yako ya barua pepe",
+        "title_password": "Nenosiri",
+        "password": "Weka nenosiri lako",
+        "forgot_password": "Umesahau Nenosiri",
+        "log_in": "Ingia",
+        "confirm_sign_up": "Hujafungua akaunti bado?",
+        "sign_up": "Jisajili",
+        "user_not_found": "Barua pepe hii haipo kwenye kumbukumbu zetu. Tafadhali angalia tena.",
+        "wrong_password": "Nenosiri si sahihi, tafadhali jaribu tena.",
+        "email_required": "Barua pepe inahitajika",
+        "password_required": "Nenosiri linahitajika"
+
+    },
+
+    "app_bar": {
+        "back": "Rudi",
+        "eng": "ENG",
+        "swa": "SWA"
+    },
+
+    "exit_app": {
+        "title": "Rudi Nyuma!",
+        "sub_title": "Una uhakika unataka kurudi nyuma?",
+        "cancel": "Ghairi",
+        "yes": "Ndio, Rudi Nyuma!"
+    },
+
+    "pop_up_page": {
+        "title": "Chagua Shughuli Yako",
+        "sub_title": "Pata Alama kwa Kupanda au Kulinda Miti",
+        "change_title": "Mti 1 = Alama 10"
+    },
+
+    "home_page": {
+        "get_selling": "Pata Miche",
+        "plant_trees": "Panda Miti",
+        "protect_trees": "Linda Miti",
+        "groups": "Vikundi",
+        "app_bar": {
+            "sub_text_coin": "Pointi | Shujaa wa Mazingira"
+        },
+        "level_status": {
+            "reach": "Umefikia kiwango cha {level}!",
+            "remaining": "Mti {count} zaidi{plural} kufikia {level}"
+        },
+        "welcome": {
+            "title": "Karibu kwenye\nSiti na Miti",
+            "sub_title_1": "Fanya kazi kwa pamoja kama jamii kupanda ",
+            "sub_title_2": "miti bilioni 4!",
+            "title_btn": "Jifunze zaidi"
+        },
+        "your_trees": {
+            "title": "Miti Yako",
+            "trees_planted": {
+                "title": "Miti Iliyopandwa",
+                "sub_title": "Panda mti wako wa kwanza ili kuona takwimu zako",
+                "title_btn": "Anza kupanda"
+            },
+            "trees_protect": {
+                "title": "Miti Iliyolindwa",
+                "sub_title": "Linda mti wako wa kwanza ili kuona takwimu zako",
+                "title_btn": "Anza kulinda"
+            }     
+        },
+        "help_center": {
+            "title_info": "Kituo cha Msaada",
+            "title": "Unahitaji msaada?",
+            "sub_title": "Tazama nyenzo muhimu kukusaidia katika safari yako ya upandaji miti au wasiliana na timu yetu ya msaada"
+        },
+        "learning_hub": {
+            "title_info": "Kitovu cha Kujifunza",
+            "title": "Kuwa mtaalamu wa upandaji miti kupitia kitovu chetu cha kujifunza!",
+            "title_btn": "Chunguza sasa"
+        }
+    }
+}

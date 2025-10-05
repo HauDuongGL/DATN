@@ -1,0 +1,85 @@
+# Flutter/Dart/Pub related files
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.melos/
+.scratch_space/
+.idea/
+android/.gradle/
+android/app/key.properties
+android/local.properties
+**/*.iml
+
+# IntelliJ related files
+*.iml
+*.ipr
+*.iws
+
+# VS Code related files
+.vscode/
+
+# Generated files
+*.log
+*.lock
+*.pyc
+*.pyo
+*.class
+*.g.dart
+*.freezed.dart
+
+# MacOS specific files
+.DS_Store
+
+# Android related files
+app/build/
+local.properties
+android/key.properties
+
+# iOS related files
+ios/Flutter/.last_build_id
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.symlinks/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+flutter_export_environment.sh
+
+# Linux related files
+linux/flutter/ephemeral/
+linux/flutter/GeneratedPluginRegistrant.cc
+
+# Web related files
+web/.dart_tool/
+
+# Windows related files
+windows/flutter/ephemeral/
+windows/flutter/GeneratedPluginRegistrant.cpp
+
+# Build output
+build/
+out/
+
+# Symbols and executable files
+*.so
+*.dylib
+*.dll
+*.exe
+*.apk
+*.ipa
+*.app
+*.deb
+*.snap
+*.app.dSYM
+*.dSYM.zip
+
+#misc 
+.env
+.env.dev
+.env.stg
