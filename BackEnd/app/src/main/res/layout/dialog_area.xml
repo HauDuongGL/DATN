@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        app:cardBackgroundColor="@color/transparent"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/background_20"
+        app:strokeWidth="2dp">
+
+        <LinearLayout
+            android:id="@+id/lnlAreas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4DFFFFFF"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/answer_all_your_questions_with_flobot"
+                android:textColor="@color/background"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rdGr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="12dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/cb0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:buttonTint="@color/background"
+                    android:text="@string/tropical"
+                    android:textColor="@color/background"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/cb1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:buttonTint="@color/background"
+                    android:text="@string/subtropical"
+                    android:textColor="@color/background"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/cb2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:buttonTint="@color/background"
+                    android:text="@string/temperate"
+                    android:textColor="@color/background"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/cb3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:buttonTint="@color/background"
+                    android:text="@string/subarctic_and_subantarctic"
+                    android:textColor="@color/background"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/cb4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:buttonTint="@color/background"
+                    android:text="@string/desert"
+                    android:textColor="@color/background"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/cb5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:buttonTint="@color/background"
+                    android:text="@string/grassland_and_meadow"
+                    android:textColor="@color/background"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/cb6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:buttonTint="@color/background"
+                    android:text="@string/tropical_rainforest"
+                    android:textColor="@color/background"
+                    android:textSize="16dp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/green_pri"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:padding="12dp"
+                android:text="@string/skip"
+                android:textAllCaps="false"
+                android:textColor="@color/background"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
