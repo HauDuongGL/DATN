@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">FlowerIdentifier</string>
+    <string name="home">Home</string>
+    <string name="my_flowers">My flowers</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description">Description</string>
+    <string name="description_flower">Papaver somniferum, commonly known as the opium poppy or breadseed poppy, is a species of flowering plant in the family Papaveraceae. It is the species of plant from which both opium and poppy seeds are dererived a… Read more</string>
+    <string name="care_flower">1. Plant your roses in an area with well-draining soil, in a spot that gets at least six hours of sun daily.\n2. Fertilize your roses every four to six weeks from the time of initial planting until mid-August.\n3. Prune roses in the spring to reduce the size of the shrub and promote new growth.\n4. Water roses deeply once or twice a week, depending on the weather. Applying a two- to three-inch-thick layer of mulch can help conserve moisture.\n5. Control common rose pests—such as aphids, thrips, and mites—by using insecticidal soap, neem oil, or an appropriate pesticide.\n6. Inspect rosebushes regularly for signs of disease or fungal growth.\n7. Provide proper winter care for roses by mulching heavily and protecting roses from spring frosts.</string>
+    <string name="care">Care</string>
+    <string name="images">Images</string>
+    <string name="save_this_flower">Save this flower</string>
+    <string name="get_started">Get started</string>
+    <string name="popular_flowers">Popular Flowers</string>
+    <string name="recent">Recent</string>
+    <string name="search_flower">Search Flower</string>
+    <string name="chat_bot">Chat bot</string>
+    <string name="flower_identifier">Flower Identifier…</string>
+    <string name="species">Species</string>
+    <string name="how_to_care_for_flowers">How to care for flowers ?</string>
+    <string name="sorry_i_can_t_recognition_this_flower">Sorry , I can\'t recognition this flower</string>
+    <string name="name_match_rate">%s : Match rate <i>%s</i>%</string>
+    <string name="type_something">Type something</string>
+    <string name="no_messages">No messages</string>
+    <string name="typing">typing</string>
+    <string name="please_wait">Please wait</string>
+    <string name="loading_a_detailed_description_of_this_flower">Loading a detailed description\nof this flower…</string>
+    <string name="discover">Discover</string>
+    <string name="scan_all_the_flowers_you_see">Scan all the flowers you see</string>
+    <string name="try_it_now">TRY IT NOW</string>
+    <string name="flobot_great_assistant">Flobot - Great assistant</string>
+    <string name="answer_all_your_questions_with_flobot">Answer all your questions with Flobot</string>
+    <string name="flower_collection">Flower collection</string>
+    <string name="store_all_your_favorite_flowers">Store all your favorite flowers</string>
+    <string name="scan_function">Scan function</string>
+    <string name="tropical_rainforest">Tropical Rainforest</string>
+    <string name="grassland_and_meadow">Grassland and Meadow</string>
+    <string name="desert">Desert</string>
+    <string name="subarctic_and_subantarctic">Subarctic and Subantarctic</string>
+    <string name="temperate">Temperate</string>
+    <string name="subtropical">Subtropical</string>
+    <string name="tropical">Tropical</string>
+    <string name="skip">Skip</string>
+    <string name="in_your_area">In your area</string>
+</resources>
