@@ -1,10 +1,15 @@
 import os
 
 from flask import Flask, request, jsonify
+from werkzeug.utils import secure_filename
 
 from feature.description import callGpt
 from model.Flower import Flower
 from feature.recognition.recognitionFlower import recognitionFlower
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_DIR = os.path.join(BASE_DIR, "feature", "recognition", "imageReceive")
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 app = Flask(__name__)
 
@@ -12,9 +17,23 @@ app = Flask(__name__)
 @app.route('/recognition', methods=['POST', 'GET'])
 def recognition():
     if request.method == 'POST':
+        if 'file' not in request.files:
+            return jsonify({
+                'status': 'error',
+                'message': 'No file part in the request'
+            }), 400
+
         file = request.files['file']
-        file_path = os.path.join(r'D:\DATN_DACS\FlowerIdentifier\BackEnd\feature\recognition\imageReceive', file.filename)
+        if file.filename == '':
+            return jsonify({
+                'status': 'error',
+                'message': 'Empty filename'
+            }), 400
+
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(UPLOAD_DIR, filename)
         file.save(file_path)
+        print(f"[BE] /recognition received: {filename} -> {file_path}", flush=True)
 
         flowers = recognitionFlower(file_path)
 
@@ -58,5 +77,5 @@ def descriptionFlower(nameFlower):
 
 
 if __name__ == '__main__':
-    app.run(host="192.168.1.161")
+    app.run(host="0.0.0.0", port=5000, debug=True)
 

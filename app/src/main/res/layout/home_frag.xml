@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/discover"
+            android:textColor="@color/background"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:background="@drawable/bg_search"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="12dp"
+                android:drawableTint="@color/background"
+                android:elevation="4dp"
+                android:hint="@string/search_flower"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="8dp"
+                android:textColorHint="@color/background"
+                android:textColor="@color/background"
+                android:textSize="16dp"
+                android:imeOptions="actionSearch"/>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="80dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lnlBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginVertical="12dp"
+                        android:background="@drawable/bg_banner_home"
+                        android:padding="12dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvBanner1"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            app:cardCornerRadius="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/img_banner_1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/bg_banner" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_marginTop="20dp"
+                                android:paddingStart="12dp"
+                                android:text="@string/scan_all_the_flowers_you_see"
+                                android:textColor="@color/background"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingStart="12dp"
+                                android:text="@string/scan_function"
+                                android:textColor="@color/background"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnScan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/try_it_now"
+                            android:textColor="@color/background"
+                            android:textSize="12dp"
+                            app:backgroundTint="#33FFFFFF"
+                            app:cornerRadius="12dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cvBanner1"
+                            app:strokeColor="#26FFFFFF"
+                            app:strokeWidth="1dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginVertical="12dp"
+                        android:background="@drawable/bg_banner_home"
+                        android:padding="12dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvBanner2"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            app:cardCornerRadius="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/img_banner_2"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/bg_banner" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_marginTop="20dp"
+                                android:paddingStart="12dp"
+                                android:text="@string/answer_all_your_questions_with_flobot"
+                                android:textColor="@color/background"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingStart="12dp"
+                                android:text="@string/flobot_great_assistant"
+                                android:textColor="@color/background"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnChat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/try_it_now"
+                            android:textColor="@color/background"
+                            android:textSize="12dp"
+                            app:backgroundTint="#33FFFFFF"
+                            app:cornerRadius="12dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cvBanner2"
+                            app:strokeColor="#26FFFFFF"
+                            app:strokeWidth="1dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginVertical="12dp"
+                        android:background="@drawable/bg_banner_home"
+                        android:padding="12dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvBanner3"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            app:cardCornerRadius="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/img_banner_3"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/bg_banner" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_marginTop="20dp"
+                                android:paddingStart="12dp"
+                                android:text="@string/store_all_your_favorite_flowers"
+                                android:textColor="@color/background"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingStart="12dp"
+                                android:text="@string/flower_collection"
+                                android:textColor="@color/background"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnScan2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/try_it_now"
+                            android:textColor="@color/background"
+                            android:textSize="12dp"
+                            app:backgroundTint="#33FFFFFF"
+                            app:cornerRadius="12dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cvBanner3"
+                            app:strokeColor="#26FFFFFF"
+                            app:strokeWidth="1dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/recent"
+                    android:textColor="@color/background"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRecentFlower"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="12dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    tools:listitem="@layout/item_flower" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

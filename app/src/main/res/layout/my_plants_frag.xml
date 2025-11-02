@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:paddingHorizontal="12dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="?actionBarSize"
+    tools:context=".ui.main.myplants.MyPlantsFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tbMyPlant"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="My Flowers"
+        app:titleTextColor="@color/background"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMyFlower"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="12dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbMyPlant"
+        app:spanCount="2"
+        tools:listitem="@layout/item_flower" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,19 @@
 from openai import OpenAI
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
-# Retrieve API key from environment variables
-# api_key = os.getenv("OPENAI_API_KEY")
-# if not api_key:
-#     raise ValueError("Missing API key. Set the OPENAI_API_KEY environment variable.")
-api_key = os.getenv("OPENAI_API_KEY")
+
+env_path = find_dotenv(filename=".env", usecwd=True)
+if env_path:
+    load_dotenv(env_path, override=True)
+
+# Accept both OPENAI_API_KEY (preferred) and OPEN_API_KEY (fallback)
+api_key = os.getenv("OPENAI_API_KEY") or os.getenv("OPEN_API_KEY")
+if not api_key:
+    raise ValueError(
+        "Missing API key. Set OPENAI_API_KEY (preferred) or OPEN_API_KEY via environment or .env"
+    )
+
 client = OpenAI(api_key=api_key)
 
 def callGPT(prompt):
