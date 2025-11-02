@@ -21,3 +21,5 @@ BackEnd/feature/recognition/model/model_inceptionv3.h5
 BackEnd/feature/recognition/model/model_mobilenet.h5
 BackEnd/feature/recognition/model/model_vgg16.h5
 BackEnd/feature/recognition/imageReceive/
+
+BackEnd/feature/recognition/model/model.h5
