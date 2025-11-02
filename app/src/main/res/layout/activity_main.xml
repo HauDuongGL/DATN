@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false">
+
+        <ImageView
+            android:id="@+id/imgBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_main" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#33000000"
+            android:paddingTop="48dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/botAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom"
+        app:backgroundTint="@color/background_20">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/botNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/transparent"
+            app:elevation="0dp"
+            app:itemIconTint="@color/color_bot_nav"
+            app:itemTextColor="@color/color_bot_nav"
+            app:menu="@menu/menu_main" />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <ImageView
+        android:id="@+id/imgScan"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/img_scan"
+        app:layout_anchor="@id/botAppBar"
+        app:layout_anchorGravity="top|center" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
