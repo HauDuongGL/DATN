@@ -4,7 +4,6 @@ import android.graphics.RenderEffect
 import android.graphics.Shader
 import android.os.Build
 import android.view.LayoutInflater
-import android.view.WindowManager
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.floweridentifier.R
@@ -15,11 +14,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ChatActivity : BaseActivity<ChatActBinding>() {
     private val viewModel by viewModel<ChatViewModel>()
     override fun initView() = binding.run {
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             binding.imgBg.setRenderEffect(
                 RenderEffect.createBlurEffect(
@@ -30,10 +24,9 @@ class ChatActivity : BaseActivity<ChatActBinding>() {
             )
         }
 
-        rvChat.run {
-            layoutManager = LinearLayoutManager(this@ChatActivity)
-            adapter = ChatAdapter(viewModel.messagesList) {}
-        }
+        val lm = LinearLayoutManager(this@ChatActivity).apply { stackFromEnd = true }
+        rvChat.layoutManager = lm
+        rvChat.adapter = ChatAdapter(viewModel.messagesList) {}
     }
 
     override fun initData() {

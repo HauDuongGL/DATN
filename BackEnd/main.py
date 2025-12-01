@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
 from feature.description import callGpt
@@ -12,6 +13,7 @@ UPLOAD_DIR = os.path.join(BASE_DIR, "feature", "recognition", "imageReceive")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 
 @app.route('/recognition', methods=['POST', 'GET'])
@@ -74,6 +76,33 @@ def descriptionFlower(nameFlower):
             'message': "Server can't get name flower"
         }
         return jsonify(response), 400
+
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    try:
+        data = request.get_json(silent=True) or {}
+        messages = data.get('messages')
+        system = data.get('system')
+        model = data.get('model', 'gpt-4o-mini')
+
+        if not isinstance(messages, list) or not messages:
+            return jsonify({
+                'status': 'error',
+                'message': 'Invalid payload: messages (list) is required'
+            }), 400
+
+        reply = callGpt.chat(messages=messages, system=system, model=model, stream=False)
+        if reply is None:
+            return jsonify({'status': 'error', 'message': 'Chat generation failed'}), 500
+
+        return jsonify({
+            'status': 'success',
+            'message': 'ok',
+            'reply': reply
+        }), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
 if __name__ == '__main__':

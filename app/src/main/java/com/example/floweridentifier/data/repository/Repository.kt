@@ -1,6 +1,7 @@
 package com.example.floweridentifier.data.repository
 
 import com.example.floweridentifier.data.model.Flower
+import com.example.floweridentifier.data.model.FlowerImage
 import com.example.floweridentifier.data.model.Message
 import com.example.floweridentifier.data.repository.local.LocalImpl
 import com.example.floweridentifier.data.repository.local.LocalRepo
@@ -37,4 +38,20 @@ class Repository(
     override suspend fun addMessage(message: Message) = localRepo.addMessage(message)
 
     override suspend fun deleteAllMessage() = localRepo.deleteAllMessage()
+
+    // FlowerImage operations
+    override suspend fun insertFlowerImage(flowerImage: FlowerImage) =
+        localRepo.insertFlowerImage(flowerImage)
+
+    override suspend fun insertFlowerImages(images: List<FlowerImage>) =
+        localRepo.insertFlowerImages(images)
+
+    override suspend fun getFlowerImages(flowerName: String): List<FlowerImage> =
+        localRepo.getFlowerImages(flowerName)
+
+    override suspend fun getFlowerImagesWithLimit(flowerName: String, limit: Int): List<FlowerImage> =
+        localRepo.getFlowerImagesWithLimit(flowerName, limit)
+
+    override suspend fun deleteFlowerImagesByName(flowerName: String) =
+        localRepo.deleteFlowerImagesByName(flowerName)
 }

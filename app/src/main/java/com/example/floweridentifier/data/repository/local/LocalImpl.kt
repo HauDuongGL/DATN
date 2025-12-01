@@ -2,6 +2,7 @@ package com.example.floweridentifier.data.repository.local
 
 import com.example.floweridentifier.data.database.AppDatabase
 import com.example.floweridentifier.data.model.Flower
+import com.example.floweridentifier.data.model.FlowerImage
 import com.example.floweridentifier.data.model.Message
 
 class LocalImpl(private val appDB: AppDatabase) : LocalRepo {
@@ -18,4 +19,20 @@ class LocalImpl(private val appDB: AppDatabase) : LocalRepo {
     override suspend fun addMessage(message: Message) = appDB.messageDao().addMessage(message)
 
     override suspend fun deleteAllMessage() = appDB.messageDao().deleteAllMessage()
+
+    // FlowerImage operations
+    override suspend fun insertFlowerImage(flowerImage: FlowerImage) =
+        appDB.flowerImageDao().insert(flowerImage)
+
+    override suspend fun insertFlowerImages(images: List<FlowerImage>) =
+        appDB.flowerImageDao().insertAll(images)
+
+    override suspend fun getFlowerImages(flowerName: String): List<FlowerImage> =
+        appDB.flowerImageDao().getImagesByFlowerName(flowerName)
+
+    override suspend fun getFlowerImagesWithLimit(flowerName: String, limit: Int): List<FlowerImage> =
+        appDB.flowerImageDao().getImagesByFlowerNameWithLimit(flowerName, limit)
+
+    override suspend fun deleteFlowerImagesByName(flowerName: String) =
+        appDB.flowerImageDao().deleteByFlowerName(flowerName)
 }

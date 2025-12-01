@@ -2,6 +2,7 @@ package com.example.floweridentifier.data.repository.local
 
 import androidx.lifecycle.LiveData
 import com.example.floweridentifier.data.model.Flower
+import com.example.floweridentifier.data.model.FlowerImage
 import com.example.floweridentifier.data.model.Message
 
 interface LocalRepo {
@@ -21,4 +22,15 @@ interface LocalRepo {
     suspend fun addMessage(message: Message)
 
     suspend fun deleteAllMessage()
+
+    // FlowerImage operations
+    suspend fun insertFlowerImage(flowerImage: FlowerImage)
+
+    suspend fun insertFlowerImages(images: List<FlowerImage>)
+
+    suspend fun getFlowerImages(flowerName: String): List<FlowerImage>
+
+    suspend fun getFlowerImagesWithLimit(flowerName: String, limit: Int): List<FlowerImage>
+
+    suspend fun deleteFlowerImagesByName(flowerName: String)
 }
