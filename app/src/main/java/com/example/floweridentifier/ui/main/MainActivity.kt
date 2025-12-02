@@ -14,6 +14,7 @@ import com.example.floweridentifier.R
 import com.example.floweridentifier.databinding.ActivityMainBinding
 import com.example.floweridentifier.extension.imagePicker
 import com.example.floweridentifier.ui.base.BaseActivity
+import com.example.floweridentifier.ui.chatbot.ChatActivity
 import com.example.floweridentifier.ui.descflower.DescriptionFlowerActivity
 import com.example.floweridentifier.ui.recognition.RecognitionActivity
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -51,6 +52,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun initListener() {
         binding.imgScan.setOnClickListener {
             this.imagePicker()
+        }
+
+        // Open Chat Support from top bar button
+        binding.imgChat.setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java))
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

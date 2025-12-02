@@ -25,6 +25,19 @@
             android:background="#33000000"
             android:paddingTop="48dp" />
 
+        <!-- Chat support button at the top-right (sibling, not inside ViewPager2) -->
+        <ImageView
+            android:id="@+id/imgChat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:padding="4dp"
+            android:src="@drawable/ic_chat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar

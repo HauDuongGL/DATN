@@ -7,8 +7,6 @@ import com.example.floweridentifier.data.model.response.Result
 import com.example.floweridentifier.data.repository.Repository
 import com.example.floweridentifier.ui.base.BaseViewModel
 import com.example.floweridentifier.utils.ResponseState
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody

@@ -6,9 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.floweridentifier.data.model.Flower
 import com.example.floweridentifier.data.repository.Repository
 import com.example.floweridentifier.ui.base.BaseViewModel
+import com.example.floweridentifier.utils.ImageStorageHelper
 import com.example.floweridentifier.utils.ResponseState
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.launch
 
 class FlowerVM(private val repository: Repository, application: Application) :
@@ -39,32 +38,43 @@ class FlowerVM(private val repository: Repository, application: Application) :
     fun getSomeImages(nameFlower: String, amount: Int) {
         viewModelScope.launch {
             someImagesResponseState.postValue(ResponseState.Loading)
-            val someImages = mutableListOf<String>()
+            try {
+                // Lấy hình ảnh từ database
+                var images = repository.getFlowerImagesWithLimit(nameFlower, amount)
 
-            val storageRef = FirebaseStorage.getInstance().reference.child(nameFlower)
-            // List all the files in the folder
-            storageRef.listAll().addOnSuccessListener { listResult ->
-                val images = mutableListOf<StorageReference>()
-                listResult.items.forEach {
-                    if (it.name.endsWith(".jpg")) {
-                        images.add(it)
-                    }
-                }
-                images.shuffle()
-
-                val selectedImages = images.take(amount)
-
-                selectedImages.forEach {
-                    it.downloadUrl.addOnSuccessListener { uri ->
-                        someImages.add(uri.toString())
-                        someImagesResponseState.postValue(ResponseState.Success(someImages, ""))
-                    }.addOnFailureListener {
-                        someImagesResponseState.postValue(ResponseState.Error("Error"))
+                // Nếu database chưa có hình ảnh, khởi tạo từ assets
+                if (images.isEmpty()) {
+                    val initializedImages = ImageStorageHelper.initializeFlowerImages(
+                        getApplication(),
+                        nameFlower
+                    )
+                    
+                    if (initializedImages.isNotEmpty()) {
+                        // Lưu vào database
+                        repository.insertFlowerImages(initializedImages)
+                        // Lấy lại với limit
+                        images = repository.getFlowerImagesWithLimit(nameFlower, amount)
                     }
                 }
 
-            }.addOnFailureListener {
-                someImagesResponseState.postValue(ResponseState.Error("Error"))
+                // Lọc ra các hình ảnh tồn tại và shuffle
+                val existingImages = images
+                    .filter { ImageStorageHelper.imageExists(it.imageUrl) }
+                    .shuffled()
+                    .take(amount)
+
+                if (existingImages.isNotEmpty()) {
+                    val imagePaths = existingImages.map { it.imageUrl }.toMutableList()
+                    someImagesResponseState.postValue(ResponseState.Success(imagePaths, ""))
+                } else {
+                    someImagesResponseState.postValue(
+                        ResponseState.Error("No images found for $nameFlower. Please add images to assets/flowers/$nameFlower/")
+                    )
+                }
+            } catch (ex: Exception) {
+                someImagesResponseState.postValue(
+                    ResponseState.Error("Failed to load images: ${ex.message}")
+                )
             }
         }
     }

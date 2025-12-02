@@ -2,7 +2,8 @@ package com.example.floweridentifier.utils
 
 object Constants {
     
-    const val BASE_URL = "http://192.168.0.104:5000/"
+    // Ngrok URL - updates when ngrok restarts
+    const val BASE_URL = "https://mozell-conservant-deceivably.ngrok-free.dev/"
     const val DATABASE_NAME = "FLOWER"
     val FLOWERS = mutableListOf(
         "bluebell", "Carnation", "Dahlia", "Forget-Me-Not", "Frangipani", "Jasmine", "Marigold", "Mimosa",
