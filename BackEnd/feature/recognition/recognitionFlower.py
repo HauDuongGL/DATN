@@ -2,7 +2,12 @@ from __future__ import print_function
 
 import numpy as np
 import cv2
-from keras.models import model_from_json
+try:
+    from keras.models import model_from_json
+    TENSORFLOW_AVAILABLE = True
+except ImportError as e:
+    print(f"[ERROR] TensorFlow/Keras could not be loaded: {e}")
+    TENSORFLOW_AVAILABLE = False
 
 
 class Flower:
@@ -21,6 +26,9 @@ def load_model(model_path, weight_path):
 
 
 def recognitionFlower(pathImage):
+    if not TENSORFLOW_AVAILABLE:
+        print("[ERROR] Recognition failed: TensorFlow is not available.")
+        return [{'name_flower': 'Error: Recognition Unavailable', 'areas': [], 'match_rate': 0}]
 
     flowers = [
         Flower('bluebell', ['Tropical Rainforest', 'Temperate']),        
@@ -64,14 +72,18 @@ def recognitionFlower(pathImage):
         Flower('scorpion grasses', ['Grassland and Meadow', 'Wetland and Riparian', 'Temperate ']),
     ]  
 
+    import os
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
     model_paths = [
-        (r"D:\DATN_DACS\FlowerIdentifier\BackEnd\feature\recognition\model\model_inceptionv3.json",
-         r"D:\DATN_DACS\FlowerIdentifier\BackEnd\feature\recognition\model\model_inceptionv3.h5"),
-        (r"D:\DATN_DACS\FlowerIdentifier\BackEnd\feature\recognition\model\model_mobilenet.json",
-         r"D:\DATN_DACS\FlowerIdentifier\BackEnd\feature\recognition\model\model_mobilenet.h5"),
-        (r"D:\DATN_DACS\FlowerIdentifier\BackEnd\feature\recognition\model\model_vgg16.json",
-         r"D:\DATN_DACS\FlowerIdentifier\BackEnd\feature\recognition\model\model_vgg16.h5"),
+        (os.path.join(BASE_DIR, "model", "model_inceptionv3.json"),
+         os.path.join(BASE_DIR, "model", "model_inceptionv3.h5")),
+        (os.path.join(BASE_DIR, "model", "model_mobilenet.json"),
+         os.path.join(BASE_DIR, "model", "model_mobilenet.h5")),
+        (os.path.join(BASE_DIR, "model", "model_vgg16.json"),
+         os.path.join(BASE_DIR, "model", "model_vgg16.h5")),
     ]
+
 
     # Đọc ảnh và tiền xử lý
     img = cv2.imread(pathImage)
