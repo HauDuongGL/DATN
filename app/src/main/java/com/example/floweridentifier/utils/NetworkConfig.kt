@@ -3,7 +3,7 @@ package com.example.floweridentifier.utils
 import com.example.floweridentifier.data.model.User
 
 object NetworkConfig {
-    const val BASE_URL = "https://config.phucanhthanh.com/api/v1/"
+    const val BASE_URL = "https://baptist-montreal-connector-thousands.trycloudflare.com/"
 
     var OPEN_API_KEY = ""
 

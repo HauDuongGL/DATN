@@ -1,7 +1,7 @@
 package com.example.floweridentifier
 
 import android.app.Application
-import androidx.viewbinding.BuildConfig
+import com.example.floweridentifier.BuildConfig
 import com.example.floweridentifier.di.networkModule
 import com.example.floweridentifier.di.repositoryModule
 import com.example.floweridentifier.di.roomModule

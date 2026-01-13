@@ -11,6 +11,7 @@ import com.example.floweridentifier.R
 import com.example.floweridentifier.data.model.Flower
 import com.example.floweridentifier.data.model.response.Result
 import com.example.floweridentifier.databinding.ItemFlowerBinding
+import com.example.floweridentifier.utils.FlowerImageHelper
 import java.text.SimpleDateFormat
 
 class FlowerAdapter(private val flowers: MutableList<Any>, val onClick: (String) -> Unit) :
@@ -48,17 +49,30 @@ class FlowerAdapter(private val flowers: MutableList<Any>, val onClick: (String)
                         root.setOnClickListener {
                             onClick.invoke(flower.nameFlower)
                         }
-                        tvNameFlower.text = flower.nameFlower.capitalize()
+                        tvNameFlower.text = flower.nameFlower.replaceFirstChar { if (it.isLowerCase()) it.titlecase(java.util.Locale.ROOT) else it.toString() }
                         tvDate.text = "Match rate: ${flower.matchRate}%"
                         tvArea.isVisible = flower.inArea
                         fabFavorite.isVisible = false
 
-                        flower.imageUri?.let {
+                        // Load ảnh từ thư mục Img_flower dựa trên tên hoa nhận diện
+                        val assetUri = FlowerImageHelper.getFlowerImageUri(context, flower.nameFlower)
+                        
+                        if (assetUri != null) {
+                            // Load ảnh từ assets
                             Glide.with(context)
-                                .load(it)
+                                .load(assetUri)
                                 .centerCrop()
                                 .transform(RoundedCorners(8))
                                 .into(imgFlower)
+                        } else {
+                            // Fallback: sử dụng imageUri từ API nếu không tìm thấy ảnh trong Img_flower
+                            flower.imageUri?.let {
+                                Glide.with(context)
+                                    .load(it)
+                                    .centerCrop()
+                                    .transform(RoundedCorners(8))
+                                    .into(imgFlower)
+                            }
                         }
                     }
 

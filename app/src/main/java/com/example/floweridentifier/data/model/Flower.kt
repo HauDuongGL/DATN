@@ -16,6 +16,7 @@ data class Flower(
     @PrimaryKey var addedAt: Long? = null,
     var imageRecognition: String? = null
 ) : Parcelable {
+    @androidx.room.Ignore
     constructor(name: String, desc: String, species: String, care: String) : this(
         name, desc, species, care, false, null, null
     )

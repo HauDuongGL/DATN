@@ -1,0 +1,15 @@
+t=2025-12-03T03:51:42+0700 lvl=info msg="no configuration paths supplied"
+t=2025-12-03T03:51:42+0700 lvl=info msg="using configuration at default config path" path=C:\\Users\\hau09\\AppData\\Local/ngrok/ngrok.yml
+t=2025-12-03T03:51:42+0700 lvl=info msg="open config file" path=C:\\Users\\hau09\\AppData\\Local\\ngrok\\ngrok.yml err=nil
+t=2025-12-03T03:51:42+0700 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2025-12-03T03:51:43+0700 lvl=info msg="client session established" obj=tunnels.session
+t=2025-12-03T03:51:43+0700 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-12-03T03:51:43+0700 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:5000 url=https://mozell-conservant-deceivably.ngrok-free.dev
+t=2025-12-03T03:51:43+0700 lvl=info msg="update available" obj=updater
+t=2025-12-03T03:51:45+0700 lvl=info msg=start pg=/api/tunnels id=b700e42920d817e8
+t=2025-12-03T03:51:45+0700 lvl=info msg=end pg=/api/tunnels id=b700e42920d817e8 status=200 dur=878.3µs
+t=2025-12-03T03:51:56+0700 lvl=info msg="join connections" obj=join id=3dce7626e019 l=127.0.0.1:5000 r=[2401:d800:7130:ff49:2dac:cb71:2371:e10]:37730
+t=2025-12-03T03:53:05+0700 lvl=info msg="join connections" obj=join id=3dad8aac8141 l=127.0.0.1:5000 r=[2401:d800:7130:ff49:2dac:cb71:2371:e10]:54956
+t=2025-12-03T03:56:17+0700 lvl=info msg="received stop request" obj=app stopReq="{err:<nil> restart:false}"
+t=2025-12-03T03:56:17+0700 lvl=info msg="session closing" obj=tunnels.session err=nil
+t=2025-12-03T03:56:17+0700 lvl=info msg="accept failed" obj=tunnels.session obj=csess id=e83958f59b9c err="reconnecting session closed"

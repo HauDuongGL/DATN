@@ -2,24 +2,44 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv, find_dotenv
 
-
 env_path = find_dotenv(filename=".env", usecwd=True)
 if env_path:
     load_dotenv(env_path, override=True)
 
 # Accept both OPENAI_API_KEY (preferred) and OPEN_API_KEY (fallback)
-api_key = os.getenv("OPENAI_API_KEY") or os.getenv("OPEN_API_KEY")
-if not api_key:
-    raise ValueError(
-        "Missing API key. Set OPENAI_API_KEY (preferred) or OPEN_API_KEY via environment or .env"
-    )
+def get_api_key():
+    # Thử tìm .env trong thư mục Backend
+    current_file = os.path.abspath(__file__)
+    current_dir = os.path.dirname(current_file)
+    backend_dir = os.path.dirname(os.path.dirname(current_dir))
+    env_path = os.path.join(backend_dir, ".env")
+    
+    if os.path.exists(env_path):
+        load_dotenv(env_path, override=True)
+    else:
+        # Fallback to default search
+        env_path = find_dotenv(filename=".env", usecwd=True)
+        if env_path:
+            load_dotenv(env_path, override=True)
+    
+    key = os.getenv("OPENAI_API_KEY") or os.getenv("OPEN_API_KEY")
+    return key
 
-client = OpenAI(api_key=api_key)
+def get_client():
+    key = get_api_key()
+    if not key:
+        return None
+    return OpenAI(api_key=key)
 
 def callGPT(prompt):
     """
     Calls OpenAI's GPT model and streams the response.
     """
+    client = get_client()
+    if not client:
+        print("Error: OpenAI API key is missing.")
+        return "Error: OpenAI API key is missing. Please check your .env file."
+        
     try:
         stream = client.chat.completions.create(
             model="gpt-4o-mini",
@@ -49,6 +69,11 @@ def chat(messages, model: str = "gpt-4o-mini", system: str | None = None, stream
     If system is provided, it will be prepended as a system message.
     Returns a single string reply when stream = False.
     """
+    client = get_client()
+    if not client:
+        print("Error: OpenAI API key is missing.")
+        return None
+
     try:
         msgs = []
         if system:

@@ -24,30 +24,46 @@ class RecognitionVM(private val repository: Repository, application: Application
         viewModelScope.launch {
             resultRecognition.postValue(ResponseState.Loading)
             try {
+                android.util.Log.d("RecognitionVM", "Starting recognition for file: ${imageFile.absolutePath}")
+                
+                if (!imageFile.exists()) {
+                    android.util.Log.e("RecognitionVM", "File does not exist: ${imageFile.absolutePath}")
+                    resultRecognition.postValue(ResponseState.Error("File does not exist"))
+                    return@launch
+                }
+                
                 var filePath = imageFile.name
                 val splitFileName =
                     filePath.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
                 filePath =
                     splitFileName[0] + "_" + System.currentTimeMillis() + "." + splitFileName[1]
 
-                val result = repository.recognizeFlower(
-                    MultipartBody.Part.createFormData(
-                        "file",
-                        filePath,
-                        imageFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-                    )
-                )
-                if (result.status == "success")
+                android.util.Log.d("RecognitionVM", "Sending request with filename: $filePath")
+                
+                val requestFile = imageFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                val body = MultipartBody.Part.createFormData("file", filePath, requestFile)
+                
+                android.util.Log.d("RecognitionVM", "File size: ${imageFile.length()} bytes")
+                
+                val result = repository.recognizeFlower(body)
+                
+                android.util.Log.d("RecognitionVM", "Response received - status: ${result.status}, results count: ${result.results.size}")
+                
+                if (result.status == "success") {
+                    android.util.Log.d("RecognitionVM", "Recognition successful: ${result.results.map { it.nameFlower }}")
                     resultRecognition.postValue(
                         ResponseState.Success(
                             result.results,
                             result.message
                         )
                     )
-                else
+                } else {
+                    android.util.Log.e("RecognitionVM", "Recognition failed: ${result.message}")
                     resultRecognition.postValue(ResponseState.Error(result.message))
+                }
             } catch (ex: Exception) {
-                resultRecognition.postValue(ex.message?.let { ResponseState.Error(it) })
+                android.util.Log.e("RecognitionVM", "Exception during recognition", ex)
+                resultRecognition.postValue(ResponseState.Error(ex.message ?: "Unknown error: ${ex.javaClass.simpleName}"))
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.floweridentifier.ui.descflower
 
+import android.content.Intent
 import android.graphics.RenderEffect
 import android.graphics.Shader
 import android.net.Uri
@@ -17,6 +18,10 @@ import com.example.floweridentifier.utils.ResponseState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 import java.util.Date
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DescriptionFlowerActivity : BaseActivity<DescriptionFlowerActBinding>() {
     private val viewModel by viewModel<FlowerVM>()
@@ -43,7 +48,7 @@ class DescriptionFlowerActivity : BaseActivity<DescriptionFlowerActBinding>() {
                 .into(binding.imgFlower)
         }
         if (nameFlower != null) {
-            binding.tvNameFlower.text = nameFlower.capitalize()
+            binding.tvNameFlower.text = nameFlower.replaceFirstChar { if (it.isLowerCase()) it.titlecase(java.util.Locale.ROOT) else it.toString() }
 
             val localFlower = viewModel.getDescFlower(nameFlower.lowercase())
             if (localFlower != null) {
@@ -99,12 +104,71 @@ class DescriptionFlowerActivity : BaseActivity<DescriptionFlowerActBinding>() {
         binding.btnBack.setOnClickListener {
             finish()
         }
+
+        binding.fabShare.setOnClickListener {
+            if (::flower.isInitialized) {
+                shareToWeb()
+            } else {
+                toastSuccess("Vui lòng đợi dữ liệu tải xong")
+            }
+        }
+    }
+
+    private fun shareToWeb() {
+        if (!com.example.floweridentifier.utils.PreferenceHelper.isLoggedIn(this)) {
+            toastSuccess("Please login to share")
+            startActivity(Intent(this, com.example.floweridentifier.ui.auth.LoginActivity::class.java))
+            return
+        }
+
+        // Try to recover file from flower object if not initialized (e.g. from History)
+        if (!::file.isInitialized && ::flower.isInitialized && !flower.imageRecognition.isNullOrEmpty()) {
+            file = File(flower.imageRecognition)
+        }
+
+        if (!::file.isInitialized || !file.exists()) {
+            toastSuccess("Image not found")
+            return
+        }
+
+        binding.pbLoad.isVisible = true
+        binding.fabShare.isEnabled = false
+
+        CoroutineScope(Dispatchers.Main).launch {
+            val userId = com.example.floweridentifier.utils.PreferenceHelper.getUserId(this@DescriptionFlowerActivity) ?: ""
+            val token = com.example.floweridentifier.utils.PreferenceHelper.getToken(this@DescriptionFlowerActivity) ?: ""
+            val repository = com.example.floweridentifier.data.repository.StorageRepository()
+            
+            val result = withContext(Dispatchers.IO) {
+                repository.uploadImage(file, userId, token)
+            }
+            
+            binding.pbLoad.isVisible = false
+            binding.fabShare.isEnabled = true
+            
+            result.onSuccess { imageUrl ->
+                val baseUrl = com.example.floweridentifier.utils.Constants.WEB_SHARE_URL
+                val shareUrl = Uri.parse(baseUrl).buildUpon()
+                    .appendQueryParameter("flowerName", flower.name)
+                    .appendQueryParameter("flowerSpecies", flower.species)
+                    .appendQueryParameter("description", flower.desc)
+                    .appendQueryParameter("care", flower.care)
+                    .appendQueryParameter("imageUrl", imageUrl)
+                    .build()
+                    .toString()
+
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(shareUrl))
+                startActivity(intent)
+            }.onFailure {
+                toastSuccess("Upload failed: ${it.message}")
+            }
+        }
     }
 
     private fun setupData() = binding.run {
         val urlImages = mutableListOf<String>()
 
-        tvNameFlower.text = flower.name.capitalize()
+        tvNameFlower.text = flower.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(java.util.Locale.ROOT) else it.toString() }
         tvDesc.text = flower.desc
         tvSpecies.text = flower.species
         tvCare.text = flower.care

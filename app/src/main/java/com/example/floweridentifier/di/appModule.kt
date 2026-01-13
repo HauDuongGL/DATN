@@ -40,6 +40,12 @@ val networkModule = module {
         val okHttpClient = OkHttpClient.Builder()
             .cache(Cache(androidContext().cacheDir, cacheSize))
             .addInterceptor(logging)
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("ngrok-skip-browser-warning", "true")
+                    .build()
+                chain.proceed(request)
+            }
             .connectTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
             .writeTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
             .readTimeout(TIME_OUT, TimeUnit.MILLISECONDS)

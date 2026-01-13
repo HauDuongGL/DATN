@@ -42,4 +42,11 @@
     <string name="tropical">Tropical</string>
     <string name="skip">Skip</string>
     <string name="in_your_area">In your area</string>
+    <string name="setting">Setting</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="notifications">Notifications</string>
+    <string name="loading_notifications">Loading notifications…</string>
+    <string name="mark_all_read">Mark all as read</string>
+    <string name="no_notifications">No notifications yet</string>
 </resources>

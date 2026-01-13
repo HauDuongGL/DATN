@@ -17,6 +17,7 @@ import com.example.floweridentifier.ui.search.SearchVM
 import com.example.floweridentifier.utils.Constants
 import com.google.gson.GsonBuilder
 import okhttp3.Cache
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -37,8 +38,17 @@ val networkModule = module {
                 if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         }
 
+        // Interceptor to bypass ngrok warning page
+        val ngrokInterceptor = Interceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("ngrok-skip-browser-warning", "true")
+                .build()
+            chain.proceed(request)
+        }
+
         val okHttpClient = OkHttpClient.Builder()
             .cache(Cache(androidContext().cacheDir, cacheSize))
+            .addInterceptor(ngrokInterceptor)
             .addInterceptor(logging)
             .connectTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
             .writeTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
