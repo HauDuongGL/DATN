@@ -58,14 +58,26 @@ class RecognitionActivity : BaseActivity<RecognitionActBinding>() {
     }
 
     override fun initData() {
+        Log.d("RecognitionActivity", "initData() called")
         uri = intent.getStringExtra("URI")
+        Log.d("RecognitionActivity", "URI from intent: $uri")
         if (uri != null) {
-            val file = File(RealPathUtil.getRealPath(this, Uri.parse(uri)))
-            Glide.with(this@RecognitionActivity)
-                .load(file.absolutePath)
-                .into(binding.imgFlower)
+            try {
+                val realPath = RealPathUtil.getRealPath(this, Uri.parse(uri))
+                Log.d("RecognitionActivity", "Real path: $realPath")
+                val file = File(realPath)
+                Log.d("RecognitionActivity", "File created: ${file.absolutePath}, exists: ${file.exists()}")
+                
+                Glide.with(this@RecognitionActivity)
+                    .load(file.absolutePath)
+                    .into(binding.imgFlower)
 
-            showDialogArea(file)
+                showDialogArea(file)
+            } catch (e: Exception) {
+                Log.e("RecognitionActivity", "Error in initData", e)
+            }
+        } else {
+            Log.e("RecognitionActivity", "URI is null!")
         }
     }
 
@@ -100,7 +112,8 @@ class RecognitionActivity : BaseActivity<RecognitionActBinding>() {
                     binding.run {
                         pbLoad.isVisible = false
                         tvLoad.text = getString(R.string.sorry_i_can_t_recognition_this_flower)
-                        Log.d("DTAG", "initListener: ${it.mess}")
+                        Log.e("RecognitionActivity", "Error: ${it.mess}")
+                        Log.e("RecognitionActivity", "Full error details", Exception(it.mess))
                     }
                 }
 
@@ -114,6 +127,8 @@ class RecognitionActivity : BaseActivity<RecognitionActBinding>() {
     }
 
     private fun showDialogArea(file: File) {
+        Log.d("RecognitionActivity", "showDialogArea called with file: ${file.absolutePath}, exists: ${file.exists()}")
+        
         val dialogBinding = DialogAreaBinding.inflate(LayoutInflater.from(this))
 
         val alertDialog =
@@ -135,6 +150,7 @@ class RecognitionActivity : BaseActivity<RecognitionActBinding>() {
                 tvNext.text = "Next"
             }
             tvNext.setOnClickListener {
+                Log.d("RecognitionActivity", "Next clicked, calling recognizeFlower with area: $area")
                 viewModel.recognizeFlower(file, area)
                 alertDialog.dismiss()
             }

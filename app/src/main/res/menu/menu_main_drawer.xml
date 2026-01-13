@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" />
+
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/flower_collection" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_leaf"
+            android:title="@string/setting" />
+    </group>
+
+    <item
+        android:id="@+id/nav_notifications"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/notifications" />
+
+    <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/chat_bot" />
+
+    <item
+        android:id="@+id/nav_auth"
+        android:icon="@drawable/ic_login"
+        android:title="@string/login" />
+
+</menu>

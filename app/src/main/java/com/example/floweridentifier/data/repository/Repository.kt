@@ -23,7 +23,7 @@ class Repository(
         remoteRepo.descriptionFlower(nameFlower)
 
     override suspend fun generateAnswerMessage(messagesHistory: List<Message>) =
-        openAiData.generateAnswerMessage(messagesHistory)
+        remoteRepo.generateAnswerMessage(messagesHistory)
 
     override fun getFlowers() = localRepo.getFlowers()
     override fun getMyFlowers() = localRepo.getMyFlowers()

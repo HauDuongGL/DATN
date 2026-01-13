@@ -73,6 +73,16 @@
                         app:srcCompat="@drawable/ic_favorite"
                         app:tint="@color/green_sec" />
 
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabShare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:backgroundTint="@color/background"
+                        app:fabSize="mini"
+                        app:srcCompat="@drawable/ic_share"
+                        app:tint="@color/green_sec" />
+
                     <TextView
                         android:id="@+id/tvNameFlower"
                         android:layout_width="wrap_content"

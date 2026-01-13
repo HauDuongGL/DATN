@@ -18,8 +18,8 @@ interface FlowerImageDao {
     @Query("SELECT * FROM FlowerImage WHERE flowerName = :flowerName")
     suspend fun getImagesByFlowerName(flowerName: String): List<FlowerImage>
     
-    @Query("SELECT * FROM FlowerImage WHERE flowerName = :flowerName LIMIT :limit")
-    suspend fun getImagesByFlowerNameWithLimit(flowerName: String, limit: Int): List<FlowerImage>
+    @Query("SELECT * FROM FlowerImage WHERE flowerName = :flowerName LIMIT :limitCount")
+    suspend fun getImagesByFlowerNameWithLimit(flowerName: String, limitCount: Int): List<FlowerImage>
     
     @Query("DELETE FROM FlowerImage WHERE flowerName = :flowerName")
     suspend fun deleteByFlowerName(flowerName: String)
