@@ -23,3 +23,24 @@ BackEnd/feature/recognition/model/model_vgg16.h5
 BackEnd/feature/recognition/imageReceive/
 
 BackEnd/feature/recognition/model/model.h5
+
+# Log files
+*.log
+backend*.log
+ngrok*.log
+serveo*.log
+localtunnel.log
+
+# Debug files
+BackEnd/debug_*.py
+BackEnd/debug_*.txt
+BackEnd/error_log.txt
+BackEnd/test_*.py
+BackEnd/test_*.jpg
+
+# IDE files
+.idea/AndroidProjectSystem.xml
+.idea/runConfigurations.xml
+
+# Response files
+response.json

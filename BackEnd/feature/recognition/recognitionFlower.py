@@ -173,16 +173,16 @@ def recognitionFlower(pathImage):
         Flower('iris', ['Temperate', 'Subtropical']),
         Flower('lily', ['Subtropical', 'Temperate']),
         Flower('lilyvalley', ['Subtropical', 'Temperate']),
-        Flower('magnolia', ['Woodland and Forest', 'Temperate', 'Subtropical', 'Wetland and Riparian']), # 29
-        Flower('pansy', ['Grassland and Meadow', 'Temperate']), # 30
-        Flower('rose', ['Grassland and Meadow', 'Temperate']), # 31
-        Flower('snowdrop', ['Temperate']), # 32
-        Flower('sunflower', ['Desert']), # 33
-        Flower('tigerlily', ['Subtropical']), # 34
-        Flower('tulip', ['Grassland and Meadow', 'Temperate', 'Subtropical']), # 35
-        Flower('water_lily', ['Freshwater Wetlands', 'Tropical and Temperate', 'Slow-moving Rivers and Ponds']), # 36
-        Flower('windflower', ['Grassland and Meadow', 'Temperate']), # 37
-        Flower('scorpion grasses', ['Grassland and Meadow', 'Wetland and Riparian', 'Temperate ']), # 38
+        Flower('magnolia', ['Woodland and Forest', 'Temperate', 'Subtropical', 'Wetland and Riparian']),
+        Flower('pansy', ['Grassland and Meadow', 'Temperate']),
+        Flower('rose', ['Grassland and Meadow', 'Temperate']),
+        Flower('snowdrop', ['Temperate']),
+        Flower('sunflower', ['Desert']),
+        Flower('tigerlily', ['Subtropical']),
+        Flower('tulip', ['Grassland and Meadow', 'Temperate', 'Subtropical']),
+        Flower('water_lily', ['Freshwater Wetlands', 'Tropical and Temperate', 'Slow-moving Rivers and Ponds']),
+        Flower('windflower', ['Grassland and Meadow', 'Temperate']),
+        Flower('scorpion grasses', ['Grassland and Meadow', 'Wetland and Riparian', 'Temperate ']),
     ]
     
     # Ensure flower list is at least large enough for potential model outputs
