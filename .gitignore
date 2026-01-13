@@ -44,3 +44,8 @@ BackEnd/test_*.jpg
 
 # Response files
 response.json
+
+# Virtual environment
+.venv/
+venv/
+venv_new/
