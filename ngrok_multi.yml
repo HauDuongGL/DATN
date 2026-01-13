@@ -1,0 +1,10 @@
+version: "3"
+agent:
+    authtoken: 37qu0Ns0dXx3K66t1zJeQMlkeyO_6qGfXTCkmDLnetqG5b7YS
+tunnels:
+    backend:
+        proto: http
+        addr: 5000
+    web:
+        proto: http
+        addr: 3000
